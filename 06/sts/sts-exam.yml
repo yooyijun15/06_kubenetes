@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: sts-nginx
+spec:
+  replicas: 3
+  podManagementPolicy: Parallel
+  serviceName: sts-service
+  selector:
+    matchLabels:
+      app: mysts
+  template:
+    metadata:
+      name: sts-nginx-pod
+      labels:
+        app: mysts
+    spec:
+      containers:
+        - name: sts-nginx-container
+          image: nginx:1.14
+          ports:
+            - containerPort: 80

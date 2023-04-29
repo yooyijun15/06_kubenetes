@@ -1,0 +1,14 @@
+# kubectl run web --image=nginx --port=80
+# docker run -d --name web -p 80:80 nginx
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web
+spec:
+  containers:
+    - name: nginx-pod
+      image: nginx
+      ports:
+        - containerPort: 80
+          protocol: TCP
